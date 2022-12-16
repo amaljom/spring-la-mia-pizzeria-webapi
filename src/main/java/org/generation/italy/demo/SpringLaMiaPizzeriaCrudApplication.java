@@ -8,12 +8,14 @@ import java.util.Set;
 
 import org.generation.italy.demo.pojo.Drink;
 import org.generation.italy.demo.pojo.Ingrediente;
+import org.generation.italy.demo.pojo.Penna;
 import org.generation.italy.demo.pojo.Pizza;
 import org.generation.italy.demo.pojo.Promozione;
  import org.generation.italy.demo.pojo.Role;
  import org.generation.italy.demo.pojo.User;
 import org.generation.italy.demo.service.DrinkService;
 import org.generation.italy.demo.service.IngredienteService;
+import org.generation.italy.demo.service.PennaService;
 import org.generation.italy.demo.service.PizzaService;
 import org.generation.italy.demo.service.PromozioneService;
 import org.generation.italy.demo.service.RoleService;
@@ -43,6 +45,9 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private PennaService pennaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringLaMiaPizzeriaCrudApplication.class, args);
@@ -145,6 +150,15 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 			userService.save(userUser);
 			userService.save(adminUser);
 			userService.save(userAdminUser);
+			
+			// api test 
+			Penna pe1 = new Penna("rossa");
+			Penna pe2 = new Penna("blu");
+			Penna pe3 = new Penna("nera");
+			
+			pennaService.save(pe1);
+			pennaService.save(pe2);
+			pennaService.save(pe3);
 			
 	}
 	

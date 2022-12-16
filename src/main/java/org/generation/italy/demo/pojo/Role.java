@@ -1,3 +1,4 @@
+
 package org.generation.italy.demo.pojo;
 
 import jakarta.persistence.Column;
@@ -10,8 +11,8 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table
-public class Penna{
-	
+public class Role {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -19,18 +20,19 @@ public class Penna{
 	@NotNull
 	@Column
 	private String name;
-
-	public Penna() { }
-	public Penna(String name) {
-		
+	
+	public Role() { }
+	public Role(String name) {
 		setName(name);
 	}
+	//id
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
+	//name
 	public String getName() {
 		return name;
 	}
@@ -40,7 +42,21 @@ public class Penna{
 	
 	@Override
 	public String toString() {
-		return getName();
+		
+		return getId() + getName();
+	}
+	@Override
+	public int hashCode() {
+		
+		return getId();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (!(obj instanceof Role)) return false;
+		
+		return obj.hashCode() == hashCode();
 	}
 	
 }

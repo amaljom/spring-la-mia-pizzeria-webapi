@@ -1,9 +1,9 @@
-package org.generation.italy.demo.api.controller;
+package org.generation.italy.demo.controller;
 
 import java.util.List;
 
-import org.generation.italy.demo.pojo.Penna;
-import org.generation.italy.demo.service.PennaService;
+import org.generation.italy.demo.pojo.Pizza;
+import org.generation.italy.demo.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,18 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/1/penna")
+@RequestMapping("/api/1/pizza")
 @CrossOrigin("*")
-public class ControllerPenna {
-
+public class ControllerPizzaApi {
+	
 	@Autowired
-	private PennaService pennaService;
+	private PizzaService ps;
 	
 	@GetMapping("/all")
-	public List<Penna> getAll() {
+	public List<Pizza> getAll() {
 		
-		List<Penna> penne = pennaService.findAll();
-		return penne;
+		List<Pizza> pizze = ps.findAll();
+		return pizze;
 	}
 }
-

@@ -29,6 +29,13 @@ public class ControllerPizzaApi {
 		List<Pizza> pizze = ps.findAll();
 		return pizze;
 	}
+	@GetMapping("/all/{q}")
+	public List<Pizza> getAllByName( @PathVariable("q") String q) {
+		
+		List<Pizza> pizze = ps.findByName(q);
+		return pizze;
+	}
+
 	// Delete
 	@GetMapping("/delete/{id}")
 	public boolean deletePizza(
@@ -70,4 +77,17 @@ public class ControllerPizzaApi {
 		
 		return newPizza;
 	}
+	/*
+	@GetMapping("/update/{id}")
+	public Pizza updatePizza(
+			@PathVariable("id") int id, 
+			@Valid @RequestBody Pizza pizza
+	) {
+	
+		
+		Pizza newPizza = ps.save(pizza);
+		
+		return newPizza;
+	}
+	*/
 }

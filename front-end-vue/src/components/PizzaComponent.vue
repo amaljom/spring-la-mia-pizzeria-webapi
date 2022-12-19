@@ -1,6 +1,9 @@
 <template>
   <div>
         <h1>ciao</h1>
+        <label for="nome">Cerca una pizza per nome</label><br>
+        <input type="text" name="nome" v-model="q">
+        <button @click="searchByName()">CERCA</button>
         <!-- pizza create form -->
         <div v-if="!pizzaCreateFrom">
             <button @click="pizzaCreateFrom = true">CREATE NEW PIZZA</button>
@@ -91,6 +94,7 @@ export default {
             pizze: [],
             pizzaCreateFrom: false,
             pizza_create: { },
+            q:'a',
         };
     },
 
@@ -173,6 +177,28 @@ export default {
                     const index = this.getPizzaIndexById(id);
                     this.pizze[index].ingredienti = ingredienti;
             });
+        },
+        
+        searchByName(){
+            console.log(this.q)
+            axios.get(API_URL + '/pizza/all/' + this.q)
+                    .then(res => {
+        
+            const pizze = res.data;
+            if (pizze == null) return;
+            this.pizze = pizze;
+            });
+
+            if (this.q == "") {
+                axios.get(API_URL + '/pizza/all')
+                .then(res => {
+            
+                const pizze = res.data;
+                if (pizze == null) return;
+                this.pizze = pizze;
+                });
+            }
+            
         }
         
     },

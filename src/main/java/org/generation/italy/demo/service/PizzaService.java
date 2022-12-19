@@ -20,7 +20,6 @@ public class PizzaService {
 		return pizzaRepo.save(pizza);
 	}
 	
-	
 	public List<Pizza> findAll() {
 		
 		return pizzaRepo.findAll();
@@ -30,14 +29,17 @@ public class PizzaService {
 		
 		return pizzaRepo.findByNomeContainingIgnoreCase(nome);
 	}
+	
 	public Optional<Pizza> findPizzaById(int id) {
 		
 		return pizzaRepo.findById(id);
 	}
+	
 	public void delete(Pizza pizza) {
 		
 		pizzaRepo.delete(pizza);
 	}
+	
 	public void deleteById(int id) {
 		
 		pizzaRepo.deleteById(id);

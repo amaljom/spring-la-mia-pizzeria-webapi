@@ -57,4 +57,17 @@ public class ControllerPizzaApi {
 		
 		return newPizza;
 	}
+	
+	// update
+	@PostMapping("/update/{id}")
+	public Pizza updatePizza(
+			@PathVariable("id") int id, 
+			@Valid @RequestBody Pizza pizza
+	) {
+	
+		
+		Pizza newPizza = ps.save(pizza);
+		
+		return newPizza;
+	}
 }

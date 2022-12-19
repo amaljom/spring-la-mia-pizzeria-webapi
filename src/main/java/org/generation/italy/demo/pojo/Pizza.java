@@ -49,7 +49,6 @@ public class Pizza implements PriceableInt{
 	@JoinColumn(name="id_promozione", nullable = true)
 	private Promozione promozione;
 	
-	
 	@ManyToMany()
 	@JsonIgnore
 	private List<Ingrediente> ingrediente;
